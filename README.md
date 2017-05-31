@@ -21,6 +21,7 @@ docker exec -it $INSTANCE_ID /bin/bash
 ### Nginx-extras
 
 This folder contains a Dockerfile which install Nginx with the Lua modules to export statistiques to [Prometheus](https://prometheus.io/docs/introduction/install/)
+
 The following ports are exposed :
   * 80
   * 443
@@ -28,7 +29,7 @@ The following ports are exposed :
 
 ### Postgresql
 
-This folder contains a Dockerfile which install Postgresql with the following informations : 
+This folder contains a Dockerfile which install Postgresql with the following informations :
   * Database : docker
   * User : docker
   * Password : docker
