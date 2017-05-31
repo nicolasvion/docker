@@ -32,11 +32,13 @@ This folder contains a Dockerfile which install Postgresql with the following in
   * Database : docker
   * User : docker
   * Password : docker
+
 The following ports are exposed :
   * 5432
 
 ### Redis
 
 This folder contains a Dockerfile which install Redis v3.
+
 The following ports are exposed :
   * 6379
