@@ -25,6 +25,19 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 ```
 
+If you are using Windows, you may need to create a **Nat rule** to access the exposed port : 
+
+```
+# Adding a port proxy (the command used above):
+netsh interface portproxy add v4tov4 listenaddress=127.0.0.1 listenport=5000 connectaddress=192.168.99.100 connectport=5000
+
+# Showing all existing port proxies:
+netsh interface portproxy show v4tov4
+
+# Deleting the same port proxy:
+netsh interface portproxy delete v4tov4 listenaddress=127.0.0.1 listenport=5000
+```
+
 ## Nginx
 
 ### Nginx-extras
