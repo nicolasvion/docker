@@ -94,3 +94,8 @@ You need to launch in the container :
 ```
 
 This script will generate png files and copy these files to your /tmp folder.
+This container is also present on the [Docker Hub](https://hub.docker.com/r/dntwk/mermaid-cli). To pull it :
+
+```
+docker pull dntwk/mermaid-cli
+```
