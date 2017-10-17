@@ -82,3 +82,15 @@ This folder contains a Dockerfile which install Redis v3.
 
 The following ports are exposed :
   * 6379
+
+### Mermaid Cli
+
+This folder contains a Dockerfile which install [mermaid](https://github.com/knsv/mermaid) to build image from text file.
+
+You need to launch in the container :
+
+```
+/bin/bash /data/generate-png.sh
+```
+
+This script will generate png files and copy these files to your /tmp folder.
