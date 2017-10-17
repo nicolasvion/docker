@@ -16,6 +16,13 @@ docker ps
 docker exec -it $INSTANCE_ID /bin/bash
 ```
 
+To clean unused containers and images:
+
+```
+docker rm $(docker ps -q -f status=exited)
+docker rmi $(docker images -q -f dangling=true)
+```
+
 To delete all containers and images:
 
 ```
@@ -38,7 +45,7 @@ netsh interface portproxy show v4tov4
 netsh interface portproxy delete v4tov4 listenaddress=127.0.0.1 listenport=5000
 ```
 
-## Nginx
+## Dockerfiles 
 
 ### Nginx-extras
 
