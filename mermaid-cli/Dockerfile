@@ -11,4 +11,4 @@ COPY files/ /data/
 WORKDIR /data
 
 # Generate png
-ENTRYPOINT ["/bin/bash", "/data/generate-png.sh"]
+# ENTRYPOINT ["/bin/bash", "/data/generate-png.sh"]
