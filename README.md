@@ -16,6 +16,14 @@ docker ps
 docker exec -it $INSTANCE_ID /bin/bash
 ```
 
+To register a new image to the docker hub :
+
+```
+docker login --username=my-username --email=mail@domain.com
+docker tag dca6524b1c1a dntwk/mermaid-cli:0.1
+docker push dntwk/mermaid-cli:0.1
+```
+
 To clean unused containers and images:
 
 ```
