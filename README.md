@@ -99,3 +99,27 @@ This container is also present on the [Docker Hub](https://hub.docker.com/r/dntw
 ```
 docker pull dntwk/mermaid-cli
 ```
+
+## Run X11 Application in Docker on Mac OS
+
+```bash
+#!/bin/bash
+
+# Install XQuartz
+brew cask install xquartz
+
+# Suppress xterm
+defaults write org.macosforge.xquartz.X11 app_to_run ''
+
+# Open XQuartz
+open -a XQuartz
+
+# Get IP
+ip=$(ifconfig en8 | grep inet | awk '$1=="inet" {print $2}')
+display_number=`ps -ef | grep "Xquartz :\d" | grep -v xinit | awk '{ print $9;  }'`
+/opt/X11/bin/xhost + $ip
+
+# Run Docker X11 GIMP Image
+/usr/local/bin/docker rm gimp
+/usr/local/bin/docker run -d --name gimp -e DISPLAY=$ip$display_number -v /tmp/.X11-unix:/tmp/.X11-unix jess/gimp
+```
