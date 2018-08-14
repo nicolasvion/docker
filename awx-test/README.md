@@ -2,7 +2,7 @@
 
 https://github.com/geerlingguy/awx-container
 
-# Quick Run
+# QuickStart 
 
 ```bash
 mkdir awx-test && cd awx-test
