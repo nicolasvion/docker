@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bastionpp
+  namespace: bastions
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      k8s-app: bastion
+  template:
+    metadata:
+      labels:
+        k8s-app: bastion
+    spec:
+      containers:
+      - name: bastion
+        image: nicolasvion/bastion:v0.4
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 6000Mi
+          requests:
+            cpu: 800m
+            memory: 4000Mi
+        ports:
+        - containerPort: 22
+        env:
+        volumeMounts:
+        - mountPath: /root/.ssh-authorized/
+          name: authorized-keys
+        - mountPath: /root/.env
+          name: kube-env
+      volumes:
+        - name: kube-env
+          configMap:
+            name: kube-env
+            defaultMode: 0700
+        - name: authorized-keys
+          configMap:
+            name: authorized-keys
+            defaultMode: 0700

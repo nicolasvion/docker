@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-env
+  namespace: bastions
+data:
+  env: |-
+    export KUBERNETES_SERVICE_HOST=172.20.0.1
+    export KUBERNETES_SERVICE_PORT=443

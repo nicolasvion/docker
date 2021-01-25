@@ -1,0 +1,31 @@
+Port 22
+
+LogLevel VERBOSE
+Protocol 2
+
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+HostKey /etc/ssh/ssh_host_rsa_key
+
+StrictModes yes
+
+PubkeyAuthentication yes
+IgnoreRhosts yes
+HostbasedAuthentication no
+IgnoreUserKnownHosts yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+
+MaxAuthTries 30
+
+UseDNS no
+PermitRootLogin yes
+
+PrintMotd yes
+TCPKeepAlive yes
+X11Forwarding no
+AllowUsers root
+AuthorizedKeysFile %h/.ssh/authorized_keys
+
+Subsystem sftp internal-sftp
