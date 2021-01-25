@@ -1,5 +1,10 @@
 FROM jagregory/pandoc
 COPY scripts/install-fonts /usr/local/bin/install-fonts
+
+RUN rm -rf /etc/apt/sources.list* && \
+    echo "deb http://ftp2.fr.debian.org/debian/ jessie main contrib non-free" \
+    > /etc/apt/sources.list
+
 RUN apt-get update && \
     apt-get install -y unzip curl && \
     curl -sLo /tmp/muli.zip https://fonts.google.com/download?family=Muli && \

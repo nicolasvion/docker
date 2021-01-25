@@ -3,7 +3,7 @@ RUN apk upgrade --no-cache \
   && apk add --no-cache \
     musl \
     build-base \
-    python3 \
+    python3 py3-pip \
     bash \
     git \
   && pip3 install --no-cache-dir --upgrade pip \
