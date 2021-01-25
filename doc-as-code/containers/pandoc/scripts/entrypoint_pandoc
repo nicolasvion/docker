@@ -1,0 +1,15 @@
+#!/bin/sh
+output=${2:-pdf}
+echo "building $1.$output"
+exec /root/.cabal/bin/pandoc \
+  --toc \
+  --latex-engine xelatex \
+  --template /templates/latex.template \
+  --variable mainfont="Muli" \
+  --variable geometry:margin=1in \
+  --highlight-style zenburn \
+  --variable date=$DATE \
+  -f markdown \
+  --to=latex \
+  -o /mnt/out/$1.$output \
+  /mnt/src/*.md

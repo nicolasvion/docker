@@ -1,0 +1,10 @@
+#!/bin/bash
+
+output=${2:-md}
+
+for i in $(ls -1 /mnt/src/*.csv)
+do
+    echo "building $i.$output"
+    csvtomd $i > $i.md 
+    cp -v $i.md /mnt/out/
+done

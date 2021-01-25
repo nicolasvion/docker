@@ -1,0 +1,51 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+variables:
+  MERMAID_ENABLED: "no"
+  CSV_ENABLED: "no"
+  PDF_ENABLED: "yes"
+  BUILD_ENABLED: "yes"
+
+stages:
+- lint
+- build
+
+lint:
+  stage: lint
+  tags:
+    - privileged
+  script:
+    - apk -U add make
+    - make lint
+
+build:
+  stage: build
+  tags:
+    - privileged
+  script:
+    - apk -U add make git curl
+    - |
+      if [ "$MERMAID_ENABLED" == "yes" ]; then
+        make mermaid
+      fi
+    - |
+      if [ "$CSV_ENABLED" == "yes" ]; then
+        make csvtomd
+      fi
+    - |
+      if [ "$PDF_ENABLED" == "yes" ]; then
+        make pandoc
+      fi
+    - |
+      if [ "$BUILD_ENABLED" == "yes" ]; then
+        for file in src/*; do make $(basename $file); done
+      fi
+  artifacts:
+    paths:
+      - out/*.png
+      - out/*.md
+      - out/*.pdf
+    expire_in: 7 days
