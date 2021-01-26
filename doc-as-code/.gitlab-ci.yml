@@ -4,8 +4,6 @@ services:
   - docker:dind
 
 variables:
-  MERMAID_ENABLED: "no"
-  CSV_ENABLED: "no"
   PDF_ENABLED: "yes"
   BUILD_ENABLED: "yes"
 
