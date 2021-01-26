@@ -4,6 +4,7 @@ services:
   - docker:dind
 
 variables:
+  DIAGRAMS_ENABLED: "yes"
   PDF_ENABLED: "yes"
   BUILD_ENABLED: "yes"
 
@@ -25,6 +26,10 @@ build:
     - privileged
   script:
     - apk -U add make git curl
+    - |
+      if [ "$DIAGRAMS_ENABLED" == "yes" ]; then
+        make diagrams
+      fi
     - |
       if [ "$PDF_ENABLED" == "yes" ]; then
         make pandoc

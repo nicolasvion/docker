@@ -1,10 +1,14 @@
 CWD		= `pwd`
 PREFIX = nicolasvion
-IMAGE = pandoc
+IMAGE_PANDOC = pandoc
+IMAGE_DIAGRAMS = diagrams
 TAG = v0.1
 
+diagrams:
+	docker build -t $(PREFIX)/$(IMAGE_DIAGRAMS):$(TAG) containers/diagrams
+
 pandoc:
-	docker build -t $(PREFIX)/$(IMAGE):$(TAG) containers/pandoc
+	docker build -t $(PREFIX)/$(IMAGE_PANDOC):$(TAG) containers/pandoc
 
 %::
 	BUILD_ENABLED="yes" sh ./scripts/run_docker.sh "$@"
