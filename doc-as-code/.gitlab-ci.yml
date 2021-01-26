@@ -28,14 +28,6 @@ build:
   script:
     - apk -U add make git curl
     - |
-      if [ "$MERMAID_ENABLED" == "yes" ]; then
-        make mermaid
-      fi
-    - |
-      if [ "$CSV_ENABLED" == "yes" ]; then
-        make csvtomd
-      fi
-    - |
       if [ "$PDF_ENABLED" == "yes" ]; then
         make pandoc
       fi

@@ -1,10 +1,11 @@
 #!/bin/sh
 output=${2:-pdf}
 echo "building $1.$output"
-exec /root/.cabal/bin/pandoc \
+exec /usr/local/bin/pandoc \
   --toc \
-  --latex-engine xelatex \
-  --template /templates/latex.template \
+  --pdf-engine pdflatex  \
+  --template /templates/eisvogel.template \
+  --listings \
   --variable mainfont="Muli" \
   --variable geometry:margin=1in \
   --highlight-style zenburn \
